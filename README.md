@@ -9,13 +9,9 @@ MQTT 프로토콜과 서버 구성에 대해서는 아래 링크를 참고하세
 
 http://www.hardcopyworld.com/gnuboard5/bbs/board.php?bo_table=lecture_rpi&wr_id=60
 
-MQTT VoiceCon 앱은 Paho MQTT android service library 를 일부 수정해서 사용하고 있습니다. 
-
-Paho 라이브러리에 대한 상세 내용은 아래 링크를 참고하세요.
+MQTT VoiceCon 앱은 Paho MQTT android service library 를 일부 수정해서 사용하고 있습니다. Paho 라이브러리에 대한 상세 내용은 아래 링크를 참고하세요.
 
 https://eclipse.org/paho/clients/android/
-
-MQTT VoiceCon 앱은 소스가 모두 공개되어 있으니 문서 하단의 GitHub 링크에서 확인하세요.
 
 Google Play Store 앱 다운로드 (v4.0.3 이상 지원)
 
