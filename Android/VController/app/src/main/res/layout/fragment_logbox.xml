@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="@style/AppTheme.FragmentContainer"
+    tools:context=".MainActivity$LogboxFragment" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:background="@color/yellow5"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginLeft="10dip"
+            android:src="@drawable/icon_box_full"/>
+
+        <TextView
+            android:id="@+id/logboxTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dip"
+            style="@style/AppTheme.FormText.Bold"
+            android:text="@string/nav_logbox" />
+    </LinearLayout>
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top">
+
+        <ScrollView
+            android:id="@+id/scroll_logbox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/logbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                style="@style/AppTheme.TextBox"
+                android:text="@string/speech_ready" />
+        </ScrollView>
+        
+    </LinearLayout>
+
+</LinearLayout>

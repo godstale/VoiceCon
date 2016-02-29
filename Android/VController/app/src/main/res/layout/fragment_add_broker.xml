@@ -1,0 +1,561 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dip"
+    style="@style/AppTheme.FragmentContainer"
+    tools:context=".MainActivity$AddBrokerFragment" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:background="@color/grayc"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_marginLeft="10dip"
+            android:src="@drawable/icon_notepad"/>
+
+        <TextView
+            android:id="@+id/logboxTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dip"
+            style="@style/AppTheme.FormText.Bold"
+            android:text="@string/nav_add_broker" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:padding="0dip" >
+
+        <!-- inner container of scroll view -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dip">
+
+            <LinearLayout
+                android:id="@+id/connTitleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dip" >
+
+                <TextView
+                    android:id="@+id/connTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    style="@style/AppTheme.FormText.Bold.Big.Green"
+                    android:text="@string/connectionInfo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/clientIdGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:layout_marginTop="10dip" >
+
+                <TextView
+                    android:id="@+id/clientIDTextView"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dip"
+                    style="@style/AppTheme.FormText.Bold"
+                    android:text="@string/clientID" />
+
+                <EditText
+                    android:id="@+id/clientId"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="@string/unameClientId"
+                    style="@style/AppTheme.FormEditText"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serverGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/serverTextView"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dip"
+                    style="@style/AppTheme.FormText.Bold"
+                    android:text="@string/server" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/serverURI"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="@string/serverURIHint"
+                    style="@style/AppTheme.FormEditText"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/portGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/portTextView"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dip"
+                    style="@style/AppTheme.FormText.Bold"
+                    android:text="@string/port" />
+
+                <EditText
+                    android:id="@+id/port"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="@string/portHint"
+                    style="@style/AppTheme.FormEditText"
+                    android:inputType="number" />
+            </LinearLayout>
+
+
+
+            <!-- Advanced section -->
+
+            <LinearLayout
+                android:id="@+id/advancedTitleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dip" >
+
+                <TextView
+                    android:id="@+id/advancedTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    style="@style/AppTheme.FormText.Bold.Big.Green"
+                    android:text="@string/advancedOptional" />
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="2dip"/>
+                <ImageView
+                    android:id="@+id/advancedShowButton"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:src="@drawable/icon_sign_down"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/advancedBodyGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/cleanSessionGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/cleanSessionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dip"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:text="@string/cleanSession" />
+
+                    <CheckBox
+                        android:id="@+id/cleanSessionCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/contentDescriptionCleanSession"
+                        android:text="@string/empty" />
+
+                    <TextView
+                        android:id="@+id/cleanSessionDetailTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dip"
+                        android:layout_marginRight="20dip"
+                        android:layout_gravity="center_vertical"
+                        style="@style/AppTheme.FormText.Small.LessPadding"
+                        android:text="@string/cleanSessionDetails" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/usernameGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/uname"
+                        android:layout_marginRight="20dip"
+                        style="@style/AppTheme.FormText.Bold" />
+
+                    <EditText
+                        android:id="@+id/uname"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="3"
+                        android:hint="@string/unameHint"
+                        style="@style/AppTheme.FormEditText"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/passwordGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pass"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:layout_marginRight="20dip" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="3"
+                        android:hint="@string/passwordHint"
+                        style="@style/AppTheme.FormEditText"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sslGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ssl"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:layout_marginRight="10dip" />
+
+                    <CheckBox
+                        android:id="@+id/sslCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty"
+                        android:layout_marginRight="10dip" />
+
+                    <EditText
+                        android:id="@+id/sslKeyLocaltion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:hint="@string/sslKeyLocaltion"
+                        style="@style/AppTheme.FormEditText"
+                        android:inputType="text" />
+
+                    <Button
+                        android:id="@+id/sslKeyBut"
+                        style="@style/AppTheme.FormButton.Small"
+                        android:clickable="false"
+                        android:layout_width="70dip"
+                        android:layout_height="30dip"
+                        android:text="@string/select" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/timeoutGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/timeout"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:layout_marginRight="20dip" />
+
+                    <EditText
+                        android:id="@+id/timeout"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="3"
+                        android:hint="@string/timeoutHint"
+                        style="@style/AppTheme.FormEditText"
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/keepaliveGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip" >
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/keepalive"
+                        android:singleLine="false"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:layout_marginRight="20dip"/>
+
+                    <EditText
+                        android:id="@+id/keepalive"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="3"
+                        android:hint="@string/keepaliveHint"
+                        style="@style/AppTheme.FormEditText"
+                        android:inputType="number" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <!-- Last Will section -->
+
+            <LinearLayout
+                android:id="@+id/lastWillTitleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dip" >
+
+                <TextView
+                    android:id="@+id/lastWillTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    style="@style/AppTheme.FormText.Bold.Big.Green"
+                    android:text="@string/willMessageOptional" />
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="2dip"/>
+                <ImageView
+                    android:id="@+id/lastWillShowButton"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:src="@drawable/icon_sign_down"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lastWillBodyGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/topicGroup"
+                    android:layout_marginTop="10dip" >
+
+                    <TextView
+                        android:id="@+id/topictextView"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dip"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:text="@string/topic" />
+
+                    <EditText
+                        android:id="@+id/lastWillTopic"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_width="0dip"
+                        android:ems="10"
+                        android:inputType="text"
+                        style="@style/AppTheme.FormEditText"
+                        android:hint="@string/lastWillTopicHint" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/messageGroup"
+                    android:layout_marginTop="5dip" >
+
+                    <TextView
+                        android:id="@+id/messageTextView"
+                        android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dip"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:text="@string/message" />
+
+                    <EditText
+                        android:id="@+id/lastWill"
+                        android:layout_weight="3"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textMultiLine"
+                        style="@style/AppTheme.FormEditText"
+                        android:hint="@string/lastWillMessageHint" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/qosGroup"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/qosTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dip"
+                        android:layout_marginRight="10dip"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:text="@string/qos" />
+
+                    <RadioGroup
+                        android:id="@+id/qosRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                        <RadioButton
+                            android:id="@+id/qos0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            style="@style/AppTheme.FormRadioBtn"
+                            android:text="@string/qos0" />
+                        <RadioButton
+                            android:id="@+id/qos1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTheme.FormRadioBtn"
+                            android:text="@string/qos1" />
+                        <RadioButton
+                            android:id="@+id/qos2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/AppTheme.FormRadioBtn"
+                            android:text="@string/qos2" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/retainedGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip" >
+
+                    <TextView
+                        android:id="@+id/retainedTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dip"
+                        style="@style/AppTheme.FormText.Bold"
+                        android:text="@string/retained" />
+
+                    <CheckBox
+                        android:id="@+id/retained"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- spacer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dip"
+                android:padding="6dip" >
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonReset"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dip"
+            android:text="@string/reset"
+            style="@style/AppTheme.FormButton" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dip"
+            android:text="@string/add_new"
+            style="@style/AppTheme.FormButton" />
+    </LinearLayout>
+
+</LinearLayout>
