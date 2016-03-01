@@ -180,7 +180,7 @@ public class ControllerContainer {
                     color,      // value
                     Integer.toString(0),   // control index
                     null, null);
-            Log.d("VController", "Red = "+mColorRed+", Green = "+mColorGreen+", Blue = "+mColorBlue);
+            //Log.d("VController", "Red = "+mColorRed+", Green = "+mColorGreen+", Blue = "+mColorBlue);
         }
     };
 
@@ -222,7 +222,7 @@ public class ControllerContainer {
                             Integer.toString(i),   // control index
                             null, null);
                     mLastProgressSent = current;
-                    Log.d("VController", "Slide progress = "+progress);
+                    //Log.d("VController", "Slide progress = "+progress);
                 }
             }
         }
@@ -236,7 +236,7 @@ public class ControllerContainer {
         @Override
         public void onClick(View v) {
             Button button = (Button)v;
-            Log.d("VController", "Key = " + button.getText().toString());
+            //Log.d("VController", "Key = " + button.getText().toString());
             mFragmentListener.OnFragmentCallback(IFragmentListener.CALLBACK_REQUEST_SEND_CONTROL,
                     ControlType.TYPE_CONTROL_KEYPAD,     // Control type
                     0,      // value(not available in this case)
