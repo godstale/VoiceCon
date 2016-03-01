@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         mContext = this;
-        mSpeechHandler = SpeechManager.getInstance(this, mSpeechListener);
+        mSpeechHandler = SpeechManager.getInstance(this, mSpeechListener,
+                Settings.getInstance(mContext).getLanguage());
 
         setContentView(R.layout.activity_main);
 
@@ -485,6 +486,11 @@ public class MainActivity extends AppCompatActivity
                     mFab.hide();
                 else
                     mFab.show();
+            } else if(msgType == IDialogListener.CALLBACK_SETTINGS_SET_LANGUAGE) {
+                if(mSpeechHandler.isWorking())
+                    mSpeechHandler.stop();
+                mSpeechHandler = SpeechManager.resetInstance(mContext, mSpeechListener,
+                        Settings.getInstance(mContext).getLanguage());
             }
         }
     };

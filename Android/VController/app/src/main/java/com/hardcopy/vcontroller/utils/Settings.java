@@ -92,6 +92,18 @@ public class Settings {
 		return prefs.getInt(Constants.PREFERENCE_KEY_SET_RES_TYPE, Constants.defaultResultType);
 	}
 
+	public synchronized void setLanguage(String language_code) {
+		SharedPreferences prefs = mContext.getSharedPreferences(Constants.PREFERENCE_NAME, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putString(Constants.PREFERENCE_KEY_SET_LANGUAGE, language_code);
+		editor.commit();
+	}
+
+	public synchronized String getLanguage() {
+		SharedPreferences prefs = mContext.getSharedPreferences(Constants.PREFERENCE_NAME, Context.MODE_PRIVATE);
+		return prefs.getString(Constants.PREFERENCE_KEY_SET_LANGUAGE, Constants.defaultLanguage);
+	}
+
 	public synchronized void setCommandSettings(Bundle command) {
 		SharedPreferences prefs = mContext.getSharedPreferences(Constants.PREFERENCE_NAME, Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();

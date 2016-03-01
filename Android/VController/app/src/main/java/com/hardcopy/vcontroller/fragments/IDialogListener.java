@@ -7,6 +7,7 @@ public interface IDialogListener {
 	public static final int CALLBACK_CONNECTION_DELETE = 3;
 
 	public static final int CALLBACK_SETTINGS_FLOATING_UI = 101;
+	public static final int CALLBACK_SETTINGS_SET_LANGUAGE = 111;
 
 	public static final int CALLBACK_CLOSE = 1000;
 	

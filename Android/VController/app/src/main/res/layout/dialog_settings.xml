@@ -147,6 +147,38 @@
         android:layout_marginTop="5dip"
         android:layout_marginBottom="5dip" />
 
+    <!-- locale -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/localeGroup"
+        android:layout_marginTop="5dip" >
+
+        <TextView
+            android:id="@+id/localeTextView"
+            android:layout_width="0dip"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dip"
+            style="@style/AppTheme.FormText.Bold"
+            android:text="@string/interval" />
+
+        <Spinner
+            android:id="@+id/localeSpinner"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            style="@style/AppTheme.FormSpinner" />
+    </LinearLayout>
+
+    <!-- spacer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="@color/blue3"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip" />
+
     <!-- Buttons -->
     <LinearLayout
         android:id="@+id/buttonGroup"

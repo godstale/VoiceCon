@@ -21,7 +21,7 @@ public class SpeechManager {
     private RecognitionListener mSpeechListener;
 
 
-    private SpeechManager(Context c, RecognitionListener l) {
+    private SpeechManager(Context c, RecognitionListener l, String language) {
         if(mContext == null)
             mContext = c;
         if(mSpeechListener == null)
@@ -30,15 +30,29 @@ public class SpeechManager {
         // preparing voice recognition
         i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, mContext.getPackageName());
-        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");   // or use [en-US]
+        if(language == null || language.length() < 2)
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");   // or use [en-US]
+        else
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, language);
     }
 
-    public synchronized static SpeechManager getInstance(Context c, RecognitionListener l) {
+    public synchronized static SpeechManager getInstance(Context c, RecognitionListener l, String language) {
         if(mInstance == null) {
-            mInstance = new SpeechManager(c, l);
+            mInstance = new SpeechManager(c, l, language);
         }
         return mInstance;
     }
+
+    public synchronized static SpeechManager resetInstance(Context c, RecognitionListener l, String language) {
+        if(mInstance != null) {
+            mInstance.stop();
+            mInstance.end();
+        }
+        mInstance = new SpeechManager(c, l, language);
+        return mInstance;
+    }
+
+
 
     public void init() {
         if(isSpeechRecogInit && mRecognizer != null)
@@ -53,14 +67,14 @@ public class SpeechManager {
     }
 
     public void start() {
-        if(isListening)
+        if(isListening || mRecognizer == null)
             return;
         mRecognizer.startListening(i);
         isListening = true;
     }
 
     public void stop() {
-        if(!isListening)
+        if(!isListening || mRecognizer == null)
             return;
         mRecognizer.stopListening();
         isListening = false;
@@ -68,7 +82,8 @@ public class SpeechManager {
 
     public void end() {
         stop();
-        mRecognizer.destroy();
+        if(mRecognizer != null)
+            mRecognizer.destroy();
         mRecognizer = null;
         isListening = false;
         isSpeechRecogInit = false;

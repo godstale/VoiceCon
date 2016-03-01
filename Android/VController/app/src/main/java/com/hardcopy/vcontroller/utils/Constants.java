@@ -28,6 +28,7 @@ public class Constants {
     public static final String PREFERENCE_KEY_SET_SHOW_FLOATING = "SettingShowFloat";
     public static final String PREFERENCE_KEY_SET_INTERVAL = "SettingInterval";
     public static final String PREFERENCE_KEY_SET_RES_TYPE = "SettingResultType";
+    public static final String PREFERENCE_KEY_SET_LANGUAGE = "SettingLanguage";
 
     public static final int MENU_MODE_LOGBOX = 1;
     public static final int MENU_MODE_BROKER_LIST = 2;
@@ -42,6 +43,7 @@ public class Constants {
     public static final boolean defaultShowFloat = true;
     public static final int defaultInterval = 500;
     public static final int defaultResultType = 1;  // simple text type
+    public static final String defaultLanguage = "ko-KR";
 
 
     /* MQTT Bundle Keys */

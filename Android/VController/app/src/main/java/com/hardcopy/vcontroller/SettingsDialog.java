@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.hardcopy.vcontroller.fragments.IDialogListener;
@@ -23,7 +26,8 @@ import com.hardcopy.vcontroller.utils.Settings;
 public class SettingsDialog extends Dialog {
 
     // Global
-    public static final String tag = "SettingsDialog";
+    private static final String tag = "SettingsDialog";
+    private static final String[] LANGUAGE_CODE = {"en-US", "ko-KR"};
 
     private String mDialogTitle;
 
@@ -36,6 +40,7 @@ public class SettingsDialog extends Dialog {
     private CheckBox mCheckFloat;
     private EditText mEditInterval;
     private RadioGroup mRadioResult;
+    private Spinner mSelectSpinner;
     private Button mBtnReset;
     private Button mBtnClose;
 
@@ -43,6 +48,7 @@ public class SettingsDialog extends Dialog {
 
     // Params
     private Object mContentObject;
+    private String mLanguage;
 
     // Constructor
     public SettingsDialog(Context context) {
@@ -91,6 +97,26 @@ public class SettingsDialog extends Dialog {
                 Settings.getInstance(mContext).setResultType(type);
             }
         });
+        mSelectSpinner = (Spinner) findViewById(R.id.localeSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mContext,
+                R.array.locale_array,
+                R.layout.spinner_simple_item2);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_simple_item);
+        //mSelectSpinner.setPrompt(mContext.getString(R.string.ctrl_spinner_title));
+        mSelectSpinner.setAdapter(adapter);
+        mSelectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(mLanguage.equalsIgnoreCase(LANGUAGE_CODE[position])) // nothing changed
+                    return;
+                mLanguage = LANGUAGE_CODE[position];
+                Settings.getInstance(mContext).setLanguage(LANGUAGE_CODE[position]);
+                if(mDialogListener != null)
+                    mDialogListener.OnDialogCallback(IDialogListener.CALLBACK_SETTINGS_SET_LANGUAGE,
+                            0, 0, null, null, null);
+            }
+            @Override public void onNothingSelected(AdapterView<?> arg0) {}
+        });
         mBtnClose = (Button) findViewById(R.id.btn_close);
         mBtnClose.setOnClickListener(mClickListener);
 
@@ -123,6 +149,16 @@ public class SettingsDialog extends Dialog {
         mEditInterval.setText(Integer.toString(time));
         boolean isShow = Settings.getInstance(mContext).getShowFloating();
         mCheckFloat.setChecked(isShow);
+
+        int position = 0;
+        mLanguage = Settings.getInstance(mContext).getLanguage();
+        for(int i=0; i<LANGUAGE_CODE.length; i++) {
+            if(mLanguage.equalsIgnoreCase(LANGUAGE_CODE[i])) {
+                position = i;
+                break;
+            }
+        }
+        mSelectSpinner.setSelection(position);
     }    // End of setContent()
     
     /*****************************************************

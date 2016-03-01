@@ -79,6 +79,11 @@
     <string name="interval">Sending interval</string>
     <string name="interval_hint">Prevent too fast update. Type time in milli-second.</string>
     <string name="show_float_ui">Show floating icon</string>
+    <string name="speech_language">Speech recognition language</string>
+    <string-array name="locale_array">
+        <item>English</item>
+        <item>Korean</item>
+    </string-array>
 
 
     <!-- Common words -->
